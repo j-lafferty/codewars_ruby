@@ -13,7 +13,15 @@
 # Signature will always contain 3 numbers; n will always be a non-negative number; if n == 0, then return an empty array (except in C return NULL) and be ready for anything else which is not clearly specified
 
 def tribonacci(signature,n)
-  #your code here
+  trib = signature
+
+  if n == 1 || n == 0
+    trib.size.downto(n) { |i| trib.delete_at(i) }
+    return trib
+  end
+
+  signature.size.upto(n - 1) { |i| trib << trib[i - 3..i].sum }
+  trib
 end
 
 # Examples:
@@ -26,4 +34,4 @@ puts tribonacci([1,2,3],10) == [1,2,3,6,11,20,37,68,125,230]
 puts tribonacci([3,2,1],10) == [3,2,1,6,9,16,31,56,103,190]
 puts tribonacci([1,1,1],1) == [1]
 puts tribonacci([300,200,100],0) == []
-puts tribonacci([0.5,0.5,0.5],30) == [0.5,0.5,0.5,1.5,2.5,4.5,8.5,15.5,28.5,52.5,96.5,177.5,326.5,600.5,1104.5,2031.5,3736.5,6872.5,12640.5,23249.5,42762.5,78652.5,144664.5,266079.5,489396.5,900140.5,1655616.5,3045153.5,5600910.5,10301680.5])
+puts tribonacci([0.5,0.5,0.5],30) == [0.5,0.5,0.5,1.5,2.5,4.5,8.5,15.5,28.5,52.5,96.5,177.5,326.5,600.5,1104.5,2031.5,3736.5,6872.5,12640.5,23249.5,42762.5,78652.5,144664.5,266079.5,489396.5,900140.5,1655616.5,3045153.5,5600910.5,10301680.5]
