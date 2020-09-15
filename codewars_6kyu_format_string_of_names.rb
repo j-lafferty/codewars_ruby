@@ -7,7 +7,7 @@ def list(names)
 end
 
 # Example:
-
+puts list([{name: 'Bart'},{name: 'Lisa'},{name: 'Maggie'},{name: 'Homer'},{name: 'Marge'}]) == 'Bart, Lisa, Maggie, Homer & Marge'
 puts list([ {name: 'Bart'}, {name: 'Lisa'}, {name: 'Maggie'} ]) == 'Bart, Lisa & Maggie'
 puts list([ {name: 'Bart'}, {name: 'Lisa'} ]) == 'Bart & Lisa'
 puts list([ {name: 'Bart'} ]) == 'Bart'
