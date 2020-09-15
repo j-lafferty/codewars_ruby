@@ -15,7 +15,7 @@
 # ["Open", "Open", "Senior", "Open", "Open", "Senior"]
 
 def openOrSenior(data)
-  data.map { |member| member[0] >= 55 && member[1] > 7 ? 'Senior' : 'Open' }
+  data.map { |age, handicap| age >= 55 && handicap > 7 ? 'Senior' : 'Open' }
 end
 
 puts openOrSenior([[45, 12],[55,21],[19, -2],[104, 20]]) == ['Open', 'Senior', 'Open', 'Senior']
