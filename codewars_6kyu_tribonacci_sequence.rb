@@ -13,15 +13,8 @@
 # Signature will always contain 3 numbers; n will always be a non-negative number; if n == 0, then return an empty array (except in C return NULL) and be ready for anything else which is not clearly specified
 
 def tribonacci(signature,n)
-  trib = signature
-
-  if n == 1 || n == 0
-    trib.size.downto(n) { |i| trib.delete_at(i) }
-    return trib
-  end
-
-  signature.size.upto(n - 1) { |i| trib << trib[i - 3..i].sum }
-  trib
+  signature.size.upto(n - 1) { |i| signature << signature[i - 3..i].sum }
+  signature[0, n]
 end
 
 # Examples:
