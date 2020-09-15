@@ -5,8 +5,8 @@
 # If the parameter is itself not a perfect square then -1 should be returned. You may assume the parameter is positive.
 
 def find_next_square(sq)
-  # Return the next square if sq is a perfect square, -1 otherwise
-  -1
+  sqrt = Math.sqrt(sq).floor
+  sq == sqrt**2 ? (sqrt + 1)**2 : -1
 end
 
 # Examples:
