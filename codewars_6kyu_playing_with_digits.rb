@@ -17,11 +17,20 @@
 
 # Note: n and p will always be given as strictly positive integers.
 
-def dig_pows(n, p)
+def dig_pow(num, pow)
+  pow_succession = pow - 1
 
+  num_digits = num.digits.reverse.map do |n|
+    pow_succession += 1
+    n**pow_succession
+  end
+  
+  k = num_digits.sum / num
+
+  num * k == num_digits.sum ? k : -1
 end
 
 
-dig_pow(89, 1) == 1
-dig_pow(92, 1) == -1
-dig_pow(46288, 3) == 51
+p dig_pow(89, 1) == 1
+p dig_pow(92, 1) == -1
+p dig_pow(46288, 3) == 51
