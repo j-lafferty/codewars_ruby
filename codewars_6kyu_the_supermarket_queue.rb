@@ -7,13 +7,8 @@
 # The function should return an integer, the total time required.
 
 def queue_time(customers, n)
-  tills = Array.new(n <= 0 ? 1 : n).fill(0)
-  
-  customers.each do |customer|
-    fastest = tills.index(tills.min)
-    tills[fastest] += customer
-  end
-
+  tills = Array.new(n <= 0 ? 1 : n, 0)
+  customers.each { |customer| tills[tills.index(tills.min)] += customer }
   tills.max
 end
 
