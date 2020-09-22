@@ -7,12 +7,14 @@
 # The function should return an integer, the total time required.
 
 def queue_time(customers, n)
-  lines =  customers.group_by.with_index {|_,index| index % n }.values
-  max_time = 0
+  tills = Array.new(n <= 0 ? 1 : n).fill(0)
+  
+  customers.each do |customer|
+    fastest = tills.index(tills.min)
+    tills[fastest] += customer
+  end
 
-  lines.each { |line| max_time = line.sum if line.sum > max_time }
-
-  max_time
+  tills.max
 end
 
 p queue_time([], 1) == 0
@@ -22,3 +24,4 @@ p queue_time([1,2,3,4,5], 1) == 15
 p queue_time([1,2,3,4,5], 100) == 5
 p queue_time([2,2,3,3,4,4], 2) == 9
 p queue_time([81, 6, 786, 758, 197, 59], 2) == 989
+p queue_time([806, 8, 688, 4, 2, 3, 8, 2, 3, 8, 6, 6, 5, 2, 790, 69, 84, 3, 10, 7, 9, 311, 268, 5, 61, 64, 20, 944, 2, 435, 944, 2, 996, 92, 6, 1, 61, 55, 7, 4, 6, 481, 80, 381, 7, 674, 9, 381, 287, 9, 32, 2, 856], 15) == 1061
