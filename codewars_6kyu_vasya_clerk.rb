@@ -12,12 +12,14 @@ def tickets(people)
   return 'NO' if people[0] > 25
 
   people.each do |bill|
-    if bill == 25
+    case bill
+    when 25
       till[25] += 1
-
-    elsif bill == 100
-      return 'NO' if till[25] < 3 && till[50] < 1
-
+    when 50
+      return 'NO' if till[25] == 0
+      till[25] -= 1
+      till[50] += 1
+    when 100
       if till[50] >= 1 && till[25] >= 1
         till[50] -= 1
         till[25] -= 1
@@ -27,12 +29,6 @@ def tickets(people)
         return 'NO'
       end
       till[100] += 1
-
-    elsif bill == 50
-      return 'NO' if till[25] == 0
-
-      till[25] -= 1
-      till[50] += 1
     end
   end
 
