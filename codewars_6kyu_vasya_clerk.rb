@@ -7,7 +7,36 @@
 # Return YES, if Vasya can sell a ticket to every person and give change with the bills he has at hand at that moment. Otherwise return NO.
 
 def tickets(people)
+  till = { 25 => 0, 50 => 0, 100 => 0 }
 
+  return 'NO' if people[0] > 25
+
+  people.each do |bill|
+    if bill == 25
+      till[25] += 1
+
+    elsif bill == 100
+      return 'NO' if till[25] < 3 && till[50] < 1
+
+      if till[50] >= 1 && till[25] >= 1
+        till[50] -= 1
+        till[25] -= 1
+      elsif till[25] >= 3
+        till[25] -= 3
+      else
+        return 'NO'
+      end
+      till[100] += 1
+
+    elsif bill == 50
+      return 'NO' if till[25] == 0
+
+      till[25] -= 1
+      till[50] += 1
+    end
+  end
+
+  'YES'
 end
 
 p tickets([25, 25, 50]) == 'YES'
